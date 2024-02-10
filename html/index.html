@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <title>GanZi</title>
+    <style>
+        @font-face {
+            font-family: 'SejonghospitalBold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        body{
+            font-family: 'SejonghospitalBold';
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .navbar{
+            padding-left: 50px;
+        }
+
+    </style>
+    
+    <link rel="icon" href="/GanZi.png" />
+</head>
+<body>
+    <br>
+    <div class="navbar">
+    <h1>GanZi</h1>
+    <nav>
+        <a href="./">Home</a>
+        <a href="./write">Write</a>
+    </nav>
+</div>
+    <hr>
+    <div class="navbar"id="posts" hx-get="./api/post" hx-trigger='load'></div>
+</body>
+</html>

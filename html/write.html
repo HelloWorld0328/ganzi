@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GanZi - Write</title>
+    <style>
+        @font-face {
+            font-family: 'SejonghospitalBold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        body{
+            font-family: 'SejonghospitalBold';
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .navbar{
+            padding-left: 50px;
+        }
+        input, textarea {
+            font-family: 'SejonghospitalBold';
+            width: 300px;
+            margin-bottom: 3px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            appearance: none;
+            border-radius: 4px;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        input:focus, textarea:focus {
+            color: #212529;
+            background-color: #fff;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+        }
+        button {
+            cursor: pointer;
+            outline: 0;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            font-size: 1rem;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        button:hover {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    </style>
+    <link href="/GanZi.png" rel="shortcut icon" type="image/x-icon">
+    <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body>
+    <br>
+    <div class="navbar">
+    <h1>GanZi</h1>
+    <nav>
+        <a href="./">Home</a>
+        <a href="./write">Write</a>
+    </nav>
+    </div>
+    <hr>
+    <div class="navbar">
+    <form hx-target="#res" hx-post="./api/post/write" hx-trigger="submit">
+        <input type="text" name="name" id="Iname" placeholder="Please input name"><br>
+        <input type="text" name="title" id="Ititle" placeholder="Please input title"><br>
+        <textarea name="content" id="Icontent" cols="22" rows="5" placeholder="Please input content"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    <div id="res"></div>
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            if (document.getElementById('Iname').value === '' || document.getElementById('Ititle').value === '' || document.getElementById('Icontent').value === '') {
+                event.preventDefault();
+                alert('Please enter values in all input fields.');
+            } else {
+                alert('Your post has been created.');
+                window.location.href = "/";
+            }
+        });
+    </script>
+</body>
+</html>
